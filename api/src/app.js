@@ -8,8 +8,7 @@ const { checkAuth } = require("./middleware/auth");
 const app = express();
 const cors = require('cors')
 
-const whiteList = ['http://localhost:3000', "https://deploy-login-azure.vercel.app/"]
-app.use(cors({origin: whiteList}))
+app.use(cors())
 app.use(morgan("dev"));
 app.use(express.json());
 
