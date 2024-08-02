@@ -1,9 +1,9 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST,DB_PORT} = process.env;
 const database = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
   { logging: false }
 );
 // async function  validate() {
