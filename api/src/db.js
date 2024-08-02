@@ -1,13 +1,10 @@
 const { Sequelize } = require("sequelize");
+require("dotenv").config();
 
-const DB_USER = "postgres";
-const DB_PASSWORD = "Juampa777";
-const DB_HOST = "localhost:5432";
-
+const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } = process.env;
 const database = new Sequelize(
-    
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/demoLogin`,{logging: false}
-  
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  { logging: false }
 );
 // async function  validate() {
 //     try {
@@ -18,8 +15,8 @@ const database = new Sequelize(
 //       }
 // }
 // validate()
-const UserModel = require("./models/User.js")
+const UserModel = require("./models/User.js");
 
-UserModel(database)
+UserModel(database);
 
-module.exports = {database, ...database.models}
+module.exports = { database, ...database.models };
