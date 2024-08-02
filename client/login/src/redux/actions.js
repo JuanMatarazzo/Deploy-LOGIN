@@ -23,7 +23,7 @@ export const GetUsersAll = () => {
       }
 
       axios
-        .get("http://localhost:3001/users", {
+        .get("/users", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ export const GetUserId = (id) => {
       if (token === "") {
         throw new Error("Token is required");
       }
-      const response = await axios.get(`http://localhost:3001/users/${id}`, {
+      const response = await axios.get(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -77,7 +77,7 @@ export const UpdateUser = (id, data) => {
         age: data.age,
       };
       const response = await axios.put(
-        `http://localhost:3001/users/${id}`,
+        `/users/${id}`,
         obj,
         {
           headers: {
@@ -107,7 +107,7 @@ export const DeleteUser = (id) => {
       }
 
       const response = await axios.delete(
-        `http://localhost:3001/users/${id}/delete`,
+        `/users/${id}/delete`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -124,7 +124,7 @@ export const DeleteUser = (id) => {
 export const GetUserLogin = (data) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`http://localhost:3001/login`, data);
+      const response = await axios.post(`/login`, data);
       dispatch({
         type: LOGIN,
         payload: {
@@ -156,7 +156,7 @@ export const GetUserCreate = (data) => {
         image: data.image,
         age: data.age,
       };
-      const response = await axios.post(`http://localhost:3001/create`, obj);
+      const response = await axios.post(`/create`, obj);
       dispatch({
         type: USER_CREATE,
         payload: {
@@ -180,7 +180,7 @@ export const GetFilterByName = (data) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/filters?order=${data}`
+        `/filters?order=${data}`
       );
       dispatch({
         type: FILTER_NAME,
@@ -196,7 +196,7 @@ export const GetFilterByGender = (data) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/filters/sex/${data}`
+        `/filters/sex/${data}`
       );
       dispatch({
         type: FILTER_GENDER,

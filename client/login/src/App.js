@@ -6,7 +6,9 @@ import Home from "./Componentes/Home/Home";
 import DashBoradAdmin from "./Componentes/Admin/DashBoradAdmin.jsx";
 import ProtectedRoute from "./Componentes/ProtectedRoute/ProtectedRoute.jsx";
 import AdminUser from "./Componentes/UserAdmin/AdminUser";
+import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:3001/';
 function App() {
   return (
       <Routes>
